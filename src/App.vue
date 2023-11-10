@@ -4,6 +4,7 @@ import AppMain from './components/AppMain.vue';
 import MovieCards from './components/MovieCards.vue';
 
 import axios from 'axios';
+import { store } from "./store.js";
 
 export default {
   components: {
@@ -11,6 +12,11 @@ export default {
     //AppMain,
     MovieCards,
     AppMain
+  },
+  data() {
+    return {
+      store,
+    }
   },
   mounted() {
     const request = axios.get('https://api.themoviedb.org/3/search/movie', {
