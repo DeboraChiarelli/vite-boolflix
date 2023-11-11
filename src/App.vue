@@ -18,31 +18,31 @@ export default {
       store,
     }
   },
-  mounted() {
-    const request = axios.get('https://api.themoviedb.org/3/search/movie', {
-      params: {
-        api_key: '76429bebfcd531f4853c24263d028640',
-        query: 'The Office'
-      }
-    });
+  methods: {
+    fetchMovies() {
+      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=76429bebfcd531f4853c24263d028640&query=${this.store.searchMovie}`)
 
-    request.then((response) => {
-      const responseJson = response.data;
-      const movies = responseJson.results;
-      console.log(movies);
-    })
+        .then(res => {
+          // console.log(res.data.results)
+          this.store.movies = res.data.results;
+          console.log(this.store.movies)
+        })
+    },
+  },
+  created() {
+    this.fetchMovies;
   }
 }
 
 </script>
 
 <template>
-  <AppHeader />
+  <AppHeader @search="fetchMovies" />
   <AppMain />
   <MovieCards />
 </template>
 
 <style lang="scss">
 @use './styles/general.scss' as *;
-@use './styles/partials/variables' as *;
+// @use './styles/partials/variables' as *;
 </style>

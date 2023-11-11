@@ -1,5 +1,5 @@
 <script>
-import { store } from "./../store.js"
+import { store } from "../store.js"
 
 export default {
     name: "AppHeader",
@@ -7,22 +7,23 @@ export default {
         return {
             store,
         }
-    }
+    },
+    emits: ["search"],
 }
 
 </script>
 
 
 <template>
-    <form>
+    <div>
 
         <input type="text" placeholder="film" v-model.trim="store.searchMovie">
-        <button type="submit" @click.prevent="$emit('search')">Search</button>
+        <button type="submit" @click="$emit('search')">Search</button>
 
-    </form>
+    </div>
 </template>
 
 <style lang="scss">
-@use './styles/general.scss' as *;
-@use './styles/partials/variables' as *;
+// @use './styles/general.scss' as *;
+// @use './styles/partials/variables' as *;
 </style>
