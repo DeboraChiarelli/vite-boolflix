@@ -1,6 +1,7 @@
 <script>
 import { store } from '../store.js'
 import MovieCards from './MovieCards.vue';
+import SerieCards from './SerieCards.vue';
 
 
 export default {
@@ -10,7 +11,8 @@ export default {
             store,
         };
     },
-    components: { MovieCards }
+    components: { MovieCards, SerieCards }
+
 }
 
 </script>
@@ -20,6 +22,12 @@ export default {
         <div class="row">
             <div class="col-4" v-for="movie in store.movies">
                 <MovieCards :detailsMovie="movie" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4" v-for="serie in store.tvSeries">
+                <SerieCards :detailsSerie="serie" />
             </div>
 
         </div>

@@ -29,11 +29,11 @@ export default {
             <li> {{ detailsMovie.original_title }}</li>
             <li> {{ detailsMovie.original_language }}</li>
             <li>
-                <img :src="flagFunction">
+                <img :src="flagFunction" class="flags">
             </li>
             <li> {{ detailsMovie.vote_average }}</li>
         </ul>
     </div>
 </template>
 
-<style></style>
+<style lang="scss"></style>
