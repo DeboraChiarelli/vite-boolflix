@@ -17,6 +17,13 @@ export default {
             }
 
 
+        },
+        coverPath() {
+            if (this.detailsMovie.poster_path === null) {
+                return '';
+            }
+
+            return `https://image.tmdb.org/t/p/w342/${this.detailsMovie.poster_path}`
         }
     }
 }
@@ -33,6 +40,9 @@ export default {
             </li>
             <li> {{ detailsMovie.vote_average }}</li>
         </ul>
+        <div class="coverPath">
+            <img :src="coverPath">
+        </div>
     </div>
 </template>
 

@@ -17,6 +17,9 @@ export default {
             }
 
 
+        },
+        coverPath() {
+            return `https://image.tmdb.org/t/p/w342/${this.detailsSerie.poster_path}`
         }
     }
 }
