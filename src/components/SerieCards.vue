@@ -1,6 +1,11 @@
 <script>
 
 export default {
+    data() {
+        return {
+            iconStar: [['far', 'star'], ['fas', 'star']],
+        }
+    },
     props: {
         detailsSerie: Object,
     },
@@ -19,7 +24,25 @@ export default {
 
         },
         coverPath() {
+            if (this.detailsSerie.poster_path === null) {
+                return '';
+            }
             return `https://image.tmdb.org/t/p/w342/${this.detailsSerie.poster_path}`
+        },
+        starFunction() {
+            const vote = Math.ceil(this.detailsSerie.vote_average / 2)
+            return vote;
+        },
+        voteStar() {
+            const starArray = [];
+            for (let i = 0; i < 5; i++) {
+                if (i + 1 <= this.starFunction) {
+                    starArray.push('fa-solid');
+                } else {
+                    starArray.push('fa-regular');
+                }
+            }
+            return starArray;
         }
     }
 }
@@ -37,7 +60,8 @@ export default {
             <li>
                 <img :src="flagFunction" class="flags">
             </li>
-            <li> {{ detailsSerie.vote_average }}</li>
+            <li> {{ starFunction }}</li>
+            <li><font-awesome-icon v-for="star in voteStar" :icon="`${star} fa-star`" /></li>
         </ul>
     </div>
 </template>

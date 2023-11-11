@@ -1,6 +1,11 @@
 <script>
 
 export default {
+    data() {
+        return {
+            iconStar: [['far', 'star'], ['fas', 'star']],
+        }
+    },
     props: {
         detailsMovie: Object,
     },
@@ -24,7 +29,23 @@ export default {
             }
 
             return `https://image.tmdb.org/t/p/w342/${this.detailsMovie.poster_path}`
+        },
+        starFunction() {
+            const vote = Math.ceil(this.detailsMovie.vote_average / 2)
+            return vote;
+        },
+        voteStar() {
+            const starArray = [];
+            for (let i = 0; i < 5; i++) {
+                if (i + 1 <= this.starFunction) {
+                    starArray.push('fa-solid');
+                } else {
+                    starArray.push('fa-regular');
+                }
+            }
+            return starArray;
         }
+
     }
 }
 </script>
@@ -38,7 +59,8 @@ export default {
             <li>
                 <img :src="flagFunction" class="flags">
             </li>
-            <li> {{ detailsMovie.vote_average }}</li>
+            <li> {{ starFunction }}</li>
+            <li><font-awesome-icon v-for="star in voteStar" :icon="`${star} fa-star`" /></li>
         </ul>
         <div class="coverPath">
             <img :src="coverPath">
