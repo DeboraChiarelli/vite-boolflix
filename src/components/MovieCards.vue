@@ -63,7 +63,7 @@ export default {
                         <img :src="flagFunction" class="flags">
                     </li>
                     <li> {{ starFunction }}</li>
-                    <li><font-awesome-icon v-for="star in voteStar" :icon="`${star} fa-star`" /></li>
+                    <li><font-awesome-icon class="stars" v-for="star in voteStar" :icon="`${star} fa-star`" /></li>
                 </ul>
                 <div class="overview">
                     <span v-if="detailsMovie.overview"><strong>Overview:</strong> {{ detailsMovie.overview }}</span>
@@ -77,6 +77,11 @@ export default {
 <style lang="scss" scoped>
 .container-cards {
     display: flex;
+    margin-bottom: 20px;
+}
+
+.stars {
+    color: yellow;
 }
 
 .cards {
@@ -84,6 +89,7 @@ export default {
     overflow: hidden;
     transition: transform 0.2s;
     cursor: pointer;
+    margin-right: 20px;
 
     &:hover {
         transform: scale(1.1);
