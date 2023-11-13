@@ -18,20 +18,29 @@ export default {
 </script>
 
 <template>
-    <div class="container">
-        <div class="row">
-            <div class="col-4" v-for="movie in store.movies">
-                <MovieCards :detailsMovie="movie" />
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-4" v-for="serie in store.tvSeries">
-                <SerieCards :detailsSerie="serie" />
+    <body id="app">
+        <div class="container">
+            <div class="row">
+                <div class="col-4" v-for="movie in store.movies">
+                    <MovieCards :detailsMovie="movie" />
+                </div>
             </div>
 
+            <div class="row">
+                <div class="col-4" v-for="serie in store.tvSeries">
+                    <SerieCards :detailsSerie="serie" />
+                </div>
+
+            </div>
         </div>
-    </div>
+    </body>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+</style>

@@ -52,24 +52,52 @@ export default {
 
 
 <template>
-    <div class="card serie">
-        <ul>
-            <li> {{ detailsSerie.name }}</li>
-            <li> {{ detailsSerie.original_name }}</li>
-            <li> {{ detailsSerie.original_language }}</li>
-            <li>
-                <img :src="flagFunction" class="flags">
-            </li>
-            <li> {{ starFunction }}</li>
-            <li><font-awesome-icon v-for="star in voteStar" :icon="`${star} fa-star`" /></li>
-        </ul>
+    <div class="container-cards">
+        <div class="cards">
+            <div class="details">
+                <ul>
+                    <li> {{ detailsSerie.name }}</li>
+                    <li> {{ detailsSerie.original_name }}</li>
+                    <li> {{ detailsSerie.original_language }}</li>
+                    <li>
+                        <img :src="flagFunction" class="flags">
+                    </li>
+                    <li> {{ starFunction }}</li>
+                    <li><font-awesome-icon v-for="star in voteStar" :icon="`${star} fa-star`" /></li>
+                </ul>
+            </div>
+        </div>
     </div>
 </template>
 
 
 
 <style lang="scss" scoped>
-.serie {
-    border: 1px solid coral;
+.container-cards {
+    display: flex;
+    // Altri stili per il contenitore delle cards
+}
+
+.cards {
+    position: relative;
+    transition: transform 0.2s; // Aggiungi una transizione per un effetto più fluido
+    cursor: pointer;
+
+    &:first-child:hover {
+        transform: scale(1.1); // Esempio: ingrandisci il primo elemento al passaggio del mouse
+    }
+}
+
+.details {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s; // Aggiungi una transizione per un effetto più fluido
+}
+
+.cards:first-child:hover .details {
+    opacity: 1; // Rendi visibile il dettaglio al passaggio del mouse sul primo elemento
 }
 </style>
