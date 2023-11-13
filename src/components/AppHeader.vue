@@ -16,23 +16,31 @@ export default {
 
 <template>
     <header class="app-header">
-        <div class="logo">
-            <img src="../../public/logo netflix.png">
+        <div class="logo-menu">
+            <div class="logo">
+                <img src="../../public/logo netflix.png">
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Serie TV</a></li>
+                    <li><a href="#">Film</a></li>
+                    <li><a href="#">Originali</a></li>
+                    <li><a href="#">Aggiunti di recente</a></li>
+                    <li><a href="#">La mia lista</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav class="nav-menu">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Serie TV</a></li>
-                <li><a href="#">Film</a></li>
-                <li><a href="#">Originali</a></li>
-                <li><a href="#">Aggiunti di recente</a></li>
-                <li><a href="#">La mia lista</a></li>
-            </ul>
-        </nav>
         <div class="search-bar">
-            <!-- <input type="text" placeholder="film" v-model.trim="store.searchMovie">
-                                                <button type="submit" @click="$emit('search')">Search</button> -->
-            <font-awesome-icon @click="$emit('search')" :icon="['fas', 'magnifying-glass']" />
+            <input type="text" placeholder="Inserisci il tuo titolo" v-model.trim="store.searchMovie">
+            <button type="submit" @click="$emit('search')">Search</button>
+            <!-- <font-awesome-icon @click="$emit('search')" :icon="['fas', 'magnifying-glass']" /> -->
+            <div class="right-menu">
+                <span>BAMBINI</span>
+                <font-awesome-icon :icon="['fas', 'bell']" />
+                <img class="user" src="../../public/utente.png">
+                <font-awesome-icon :icon="['fas', 'caret-down']" />
+            </div>
         </div>
     </header>
 </template>
@@ -45,6 +53,11 @@ export default {
     padding: 20px;
     background-color: #111;
     color: white;
+}
+
+.logo-menu {
+    display: flex;
+    align-items: center;
 }
 
 .logo {
@@ -63,13 +76,12 @@ export default {
     li {
         margin-right: 20px;
     }
-
-
 }
 
 .search-bar {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
 
     input {
         padding: 8px;
@@ -86,5 +98,15 @@ export default {
         border-radius: 4px;
         cursor: pointer;
     }
+
+    .user {
+        width: 20px;
+    }
+}
+
+.right-menu {
+    display: flex;
+    gap: 15px;
+    margin-left: 15px;
 }
 </style>
