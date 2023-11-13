@@ -65,6 +65,9 @@ export default {
                     <li> {{ starFunction }}</li>
                     <li><font-awesome-icon v-for="star in voteStar" :icon="`${star} fa-star`" /></li>
                 </ul>
+                <div class="overview">
+                    <span v-if="detailsSerie.overview"><strong>Overview:</strong> {{ detailsSerie.overview }}</span>
+                </div>
             </div>
         </div>
     </div>
@@ -75,29 +78,54 @@ export default {
 <style lang="scss" scoped>
 .container-cards {
     display: flex;
-    // Altri stili per il contenitore delle cards
 }
 
 .cards {
     position: relative;
-    transition: transform 0.2s; // Aggiungi una transizione per un effetto più fluido
+    overflow: hidden;
+    transition: transform 0.2s;
     cursor: pointer;
 
-    &:first-child:hover {
-        transform: scale(1.1); // Esempio: ingrandisci il primo elemento al passaggio del mouse
+    &:hover {
+        transform: scale(1.1);
     }
-}
 
-.details {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.3s; // Aggiungi una transizione per un effetto più fluido
-}
+    .details {
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        // transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity 0.3s;
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 10px;
+        border-radius: 5px;
+        color: white;
+        width: 100%;
+    }
 
-.cards:first-child:hover .details {
-    opacity: 1; // Rendi visibile il dettaglio al passaggio del mouse sul primo elemento
+    &:hover .details {
+        opacity: 1;
+    }
+
+    .overview {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        transition: opacity 0.3s, transform 0.3s;
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        transform: translateY(-100%);
+        color: white;
+    }
+
+    &:hover .overview {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 </style>

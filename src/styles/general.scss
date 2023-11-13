@@ -33,82 +33,12 @@ img {
 .row {
     display: flex;
     flex-wrap: wrap;
-
 }
 
 .col-4 {
     flex-basis: calc((100% / 12) * 4);
-
 }
 
 .flags {
     max-width: 20px;
-}
-
-.container-cards {
-    width: 300px;
-    margin: 10px;
-    background-color: #141414;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.2s;
-}
-
-.container-cards:hover {
-    transform: scale(1.05);
-}
-
-
-
-.cards:hover img {
-    opacity: 0.2;
-}
-
-.cards {
-    width: 300px;
-    position: relative;
-
-    .cards img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-        cursor: pointer;
-    }
-
-    .details-movie {
-        display: none;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        padding: 20px;
-        color: #fff;
-        font-family: 'Poppins', sans-serif;
-        box-sizing: border-box;
-        background: rgba(0, 0, 0, 0.8);
-        overflow: auto;
-    }
-
-
-
-    .overview {
-        padding: 10px;
-
-        span {
-            font-size: 14px;
-            color: #ccc;
-        }
-    }
-}
-
-.card:hover .details-movie {
-    display: block;
-}
-
-div {
-    color: rgb(233, 233, 233);
-    font-family: 'Poppins', sans-serif;
 }
