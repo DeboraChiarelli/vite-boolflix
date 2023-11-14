@@ -9,10 +9,22 @@ export default {
     data() {
         return {
             store,
+            isSearchActive: false,  // Aggiunta di uno stato per gestire la visualizzazione del campo di input
         }
     },
     // Eventi emessi dal componente
     emits: ["search"],
+    methods: {
+        // Funzione per attivare la barra di ricerca
+        activateSearch() {
+            this.isSearchActive = true;
+        },
+        // Funzione per eseguire la ricerca
+        performSearch() {
+            this.$emit("search");
+            this.isSearchActive = false;  // in questo modo si nasconde il campo di input dopo la ricerca
+        },
+    },
 }
 
 </script>
@@ -38,9 +50,14 @@ export default {
         </div>
         <!-- Barra di ricerca e menu a destra -->
         <div class="search-bar">
-            <input type="text" placeholder="Inserisci il tuo titolo" v-model.trim="store.searchMovie">
-            <button type="submit" @click="$emit('search')">Search</button>
-            <!-- <font-awesome-icon @click="$emit('search')" :icon="['fas', 'magnifying-glass']" /> -->
+            <!-- Se la ricerca è attiva, mostra il campo di input, altrimenti mostra l'icona della lente -->
+            <div v-if="isSearchActive">
+                <input type="text" placeholder="Inserisci il tuo titolo" v-model.trim="store.searchMovie">
+                <button type="submit" @click="$emit('search')">Search</button>
+            </div>
+            <div v-else>
+                <font-awesome-icon @click="activateSearch" :icon="['fas', 'search']" />
+            </div>
             <!-- Menu a destra -->
             <div class="right-menu">
                 <span>BAMBINI</span>
