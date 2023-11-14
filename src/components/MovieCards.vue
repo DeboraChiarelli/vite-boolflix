@@ -1,5 +1,3 @@
-
-  
 <script>
 import MediaCard from "./MediaCard.vue";
 

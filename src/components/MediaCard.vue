@@ -52,7 +52,8 @@ export default {
                     <li><img :src="flagFunction" class="flags"></li>
                     <li>{{ starFunction }}</li>
                     <li>
-                        <font-awesome-icon class="stars" v-for="star in voteStar" :icon="`${star} fa-star`" />
+                        <font-awesome-icon class="stars" v-for="star in starFunction" icon="fa-solid fa-star" />
+                        <font-awesome-icon class="stars" v-for="star in 5 - starFunction" icon="fa-regular fa-star" />
                     </li>
                 </ul>
                 <div class="overview">
@@ -100,6 +101,7 @@ export default {
         border-radius: 5px;
         color: white;
         width: 100%;
+        font-size: 12px;
     }
 
     /* Mostra i dettagli al passaggio del mouse */
@@ -131,3 +133,7 @@ export default {
     }
 }
 </style>
+
+
+
+  
