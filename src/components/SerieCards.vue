@@ -1,16 +1,18 @@
 <script>
-
+// Definizione del componente Vue
 export default {
-    data() {
+    data() { // Dati del componente
         return {
-            iconStar: [['far', 'star'], ['fas', 'star']],
+            iconStar: [['far', 'star'], ['fas', 'star']],  // Icona della stella, composta da due array di stringhe per gli stili regular e solid
         }
     },
+    // Proprietà del componente (dati passati dal componente padre)
     props: {
-        detailsSerie: Object,
+        detailsSerie: Object, // Dettagli della serie TV passati come oggetto
     },
+    // Proprietà calcolate del componente
     computed: {
-        flagFunction() {
+        flagFunction() { // Funzione per restituire il percorso della bandiera in base alla lingua originale della serie TV
             if (this.detailsSerie.original_language === 'it') {
                 return 'italy.png';
             } else if (this.detailsSerie.original_language === 'de') {
@@ -23,17 +25,17 @@ export default {
 
 
         },
-        coverPath() {
+        coverPath() { // Funzione per costruire il percorso dell'immagine di copertina della serie TV
             if (this.detailsSerie.poster_path === null) {
                 return '';
             }
             return `https://image.tmdb.org/t/p/w342/${this.detailsSerie.poster_path}`
         },
-        starFunction() {
+        starFunction() { // Funzione per calcolare il numero di stelle piene basate sul voto medio della serie TV
             const vote = Math.ceil(this.detailsSerie.vote_average / 2)
             return vote;
         },
-        voteStar() {
+        voteStar() { // Funzione per costruire un array di classi FontAwesome per le stelle del voto
             const starArray = [];
             for (let i = 0; i < 5; i++) {
                 if (i + 1 <= this.starFunction) {
@@ -54,17 +56,22 @@ export default {
 <template>
     <div class="container-cards">
         <div class="cards">
+            <!-- Dettagli della serie TV -->
             <div class="details">
                 <ul>
                     <li> {{ detailsSerie.name }}</li>
                     <li> {{ detailsSerie.original_name }}</li>
                     <li> {{ detailsSerie.original_language }}</li>
                     <li>
+                        <!-- Bandiera corrispondente alla lingua originale della serie TV -->
                         <img :src="flagFunction" class="flags">
                     </li>
+                    <!-- Voto medio della serie TV -->
                     <li> {{ starFunction }}</li>
+                    <!-- Icone delle stelle basate sul voto medio -->
                     <li><font-awesome-icon class="stars" v-for="star in voteStar" :icon="`${star} fa-star`" /></li>
                 </ul>
+                <!-- Panoramica della serie TV (mostrata al passaggio del mouse) -->
                 <div class="overview">
                     <span v-if="detailsSerie.overview"><strong>Overview:</strong> {{ detailsSerie.overview }}</span>
                 </div>
@@ -90,12 +97,14 @@ export default {
     overflow: hidden;
     transition: transform 0.2s;
     cursor: pointer;
-    margin-right: 20px;
+    margin-right: 10px;
 
+    /* Effetto zoom al passaggio del mouse */
     &:hover {
         transform: scale(1.1);
     }
 
+    /* Dettagli della serie TV (inizialmente nascosti) */
     .details {
         position: absolute;
         top: 0%;
@@ -110,10 +119,12 @@ export default {
         width: 100%;
     }
 
+    /* Mostra i dettagli al passaggio del mouse */
     &:hover .details {
         opacity: 1;
     }
 
+    /* Panoramica della serie TV (inizialmente nascosta) */
     .overview {
         position: absolute;
         top: 100%;
@@ -129,6 +140,7 @@ export default {
         color: white;
     }
 
+    /* Mostra la panoramica al passaggio del mouse */
     &:hover .overview {
         opacity: 1;
         transform: translateY(0);

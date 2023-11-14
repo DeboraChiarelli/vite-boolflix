@@ -1,13 +1,17 @@
 <script>
+// Importazione dello store
 import { store } from "../store.js"
-
+// Definizione il componente AppHeader
 export default {
+    // Nome del componente
     name: "AppHeader",
+    // Dati del componente
     data() {
         return {
             store,
         }
     },
+    // Eventi emessi dal componente
     emits: ["search"],
 }
 
@@ -20,6 +24,7 @@ export default {
             <div class="logo">
                 <img src="../../public/logo netflix.png">
             </div>
+            <!-- Menu di navigazione -->
             <nav class="nav-menu">
                 <ul>
                     <li><a href="#">Home</a></li>
@@ -31,10 +36,12 @@ export default {
                 </ul>
             </nav>
         </div>
+        <!-- Barra di ricerca e menu a destra -->
         <div class="search-bar">
             <input type="text" placeholder="Inserisci il tuo titolo" v-model.trim="store.searchMovie">
             <button type="submit" @click="$emit('search')">Search</button>
             <!-- <font-awesome-icon @click="$emit('search')" :icon="['fas', 'magnifying-glass']" /> -->
+            <!-- Menu a destra -->
             <div class="right-menu">
                 <span>BAMBINI</span>
                 <font-awesome-icon :icon="['fas', 'bell']" />
@@ -51,7 +58,7 @@ export default {
     align-items: center;
     justify-content: space-between;
     padding: 20px;
-    background-color: #111;
+    background-color: #141414;
     color: white;
 }
 
@@ -78,6 +85,7 @@ export default {
     }
 }
 
+/* Stile per barra di ricerca e il menu a destra */
 .search-bar {
     display: flex;
     align-items: center;
