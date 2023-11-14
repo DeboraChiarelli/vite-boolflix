@@ -72,8 +72,8 @@ export default {
 }
 
 .static-image {
-    width: 100%;
-    height: auto;
+    width: 253px;
+    height: 380px;
     object-fit: cover;
 }
 
