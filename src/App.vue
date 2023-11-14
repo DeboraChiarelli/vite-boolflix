@@ -3,14 +3,15 @@
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
 
+
 import axios from 'axios';
 import { store } from "./store.js";
 // Definizione del componente principale dell'applicazione
 export default {
   components: {
     AppHeader, // Registrazione dei componenti AppHeader e AppMain
-    //AppMain,
-    AppMain
+    AppMain,
+
   },
   data() {
     return {
